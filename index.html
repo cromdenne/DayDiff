@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="How much time is between two dates? What is the date exactly four weeks from today? Plug in a start date and either an end date or a period of time to add/subtract, DateDiff does the rest.">
+        <meta name="keywords" content="date calculator, date difference, date addition, date subtraction">
+        <meta name="author" content="Cory Romdenne">
+        
+        <title>DayDiff</title>
+
+        <!-- favicon -->
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+        
+        <!-- Font Awesome -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Cabin" rel="stylesheet">
+        
+        <!-- custom styles -->
+        <link href="css/styles.css" rel="stylesheet">
+    
+    </head>
+    
+    <body>
+
+        <div id="content" class="container-fluid text-center">
+            <div class="row">
+                <h1 class="hero text-gradient">DayDiff</h1>
+            </div><!-- /.row -->
+            <div id="diff-form" class="row">
+                <div class="col-md-4">
+                    <input class="diff-input" type="text" name="diff-start" placeholder="start date">
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4">
+                    <div class="select-div">
+                        <select class="diff-input" name="diff-select">
+                            <option value="to">to</option>
+                            <option value="plus">plus</option>
+                            <option value="minus">minus</option>
+                        </select>
+                    </div><!-- /.select-div -->
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4">
+                    <input class="diff-input" type="text" name="diff-end" placeholder="end date">
+                </div><!-- /.col-md-4 -->
+            </div><!-- /#diff-form -->
+            <div class="row">
+                <button id="diff-submit" class="diff-input">Submit</button>
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
+                    <div id="result"><span class="text-dark">no result yet...</span></div>
+                </div><!-- /.col-md-4 -->
+            </div><!-- /.row -->
+        </div><!-- /#content -->
+
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+        <!-- Moment JS -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <!-- Datepicker -->
+        <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+
+        <!-- custom scripts -->
+        <script type="text/javascript" src="js/main.js"></script>
+
+    </body>
+</html>

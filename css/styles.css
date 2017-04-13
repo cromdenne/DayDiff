@@ -1,0 +1,107 @@
+/*===========================================================================*/
+/*  GLOBAL				                                                     */
+/*===========================================================================*/
+body {
+	background-color: #29335c;
+	font-family: 'Cabin', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Fredericka the Great', cursive;
+}
+
+a {  }
+
+.hero {
+	font-size: 72px;
+	line-height: 96px;
+}
+
+.text-gradient {
+	color: #fa2471;
+} @supports (background-clip: text) or (-webkit-background-clip: text) {
+	.text-gradient {
+		background-image: -webkit-linear-gradient(332deg, #fd7d57 30%, #fa2471 70%);
+		background-image: linear-gradient(118deg, #fd7d57 30%, #fa2471 70%);
+		color: transparent;
+		background-clip: text;
+		-webkit-background-clip: text;
+	}
+}
+
+.text-dark {
+	color: #29335c;
+}
+
+/*===========================================================================*/
+/*  CONTENT				                                                     */
+/*===========================================================================*/
+#content {
+	margin-top: 100px;
+}
+
+#diff-form {
+	margin-top: 25px;
+}
+
+.diff-input {
+	background-color: #182147;
+	border: none;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	margin: 5px 0;
+	padding: 15px;
+	color: #e3e9f2;
+	transition: 300ms all;
+}
+
+.diff-input:focus {
+	outline: none;
+	box-shadow: 0px 0px 15px 5px #182147;
+	transition: 300ms all;
+}
+
+#diff-form select {
+	height: 50px;
+	width: 100px;
+	margin-left: 18px;
+	-webkit-appearance: none;
+}
+
+.select-div:after {
+    content: '\f078';
+    font: normal normal normal 17px/1 FontAwesome;
+    color: #29335c;
+    position: relative;
+    left: -35px;
+    pointer-events: none;
+}
+
+#diff-submit {
+	margin-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
+	background: -webkit-linear-gradient(332deg, #fd7d57, #fa2471);
+	background: linear-gradient(118deg, #fd7d57, #fa2471);
+	background-color: #fa2471;
+	-webkit-transform: perspective(1px) translateZ(0);
+	  transform: perspective(1px) translateZ(0);
+	transition: 300ms all;
+}
+
+#diff-submit:hover,
+#diff-submit:active,
+#diff-submit:focus {
+	-webkit-transform: scale(1.1);
+	  transform: scale(1.1);
+	transition: 300ms all;
+}
+
+#result {
+	display: none;
+	background-color: #182147;
+	color: #e3e9f2;
+	margin-top: 50px;
+	padding: 50px;
+	font-size: 18px;
+}
