@@ -38,11 +38,11 @@
             </div><!-- /.row -->
             <div id="diff-form" class="row">
                 <div class="col-md-4">
-                    <input class="diff-input" type="text" name="diff-start" placeholder="start date">
+                    <input class="diff-input" type="text" name="diff-start" placeholder="start date" v-model="diffStart">
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
                     <div class="select-div">
-                        <select class="diff-input" name="diff-select">
+                        <select class="diff-input" name="diff-select" v-model="selected">
                             <option value="to">to</option>
                             <option value="plus">plus</option>
                             <option value="minus">minus</option>
@@ -50,15 +50,25 @@
                     </div><!-- /.select-div -->
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
-                    <input class="diff-input" type="text" name="diff-end" placeholder="end date">
+                    <input class="diff-input" type="text" name="diff-end" placeholder="end date" v-if="selected === 'to'" v-model="diffEnd">
+                    <input class="diff-input diff-input-sm" type="text" name="diff-plus" placeholder="time" v-if="selected === 'plus'" v-model="diffPlus">
+                    <input class="diff-input diff-input-sm" type="text" name="diff-minus" placeholder="time" v-if="selected === 'minus'" v-model="diffMinus">
+                    <div class="select-div" v-if="selected === 'plus' || selected === 'minus'">
+                        <select class="diff-input" name="diff-time" v-model="timeUnit">
+                            <option value="days">days</option>
+                            <option value="weeks">weeks</option>
+                            <option value="months">months</option>
+                            <option value="years">years</option>
+                        </select>
+                    </div><!-- /.select-div -->
                 </div><!-- /.col-md-4 -->
             </div><!-- /#diff-form -->
             <div class="row">
-                <button id="diff-submit" class="diff-input">Submit</button>
+                <button id="diff-submit" class="diff-input" v-on:click="dateToDate()">Submit</button>
             </div><!-- /.row -->
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
-                    <div id="result"><span class="text-dark">no result yet...</span></div>
+                    <div id="result">{{result}}</div>
                 </div><!-- /.col-md-4 -->
             </div><!-- /.row -->
         </div><!-- /#content -->
@@ -66,6 +76,9 @@
 
         <!-- jQuery -->
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+        <!-- Vue.js -->
+        <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 
         <!-- Moment JS -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
