@@ -4,29 +4,50 @@ var vm = new Vue({
 
 	// capture which input is active
 	data: {
-		selected: 'to',
+		operation: 'to',
 		timeUnit: 'days',
 		diffStart: '',
 		diffEnd: '',
-		diffPlus: '',
-		diffMinus: '',
+		diffInterval: '',
 		result: ''
 	},
 
 	methods: {
-		dateToDate: function() {
-			var startDate = moment(this.diffStart);
-			var endDate = moment(this.diffEnd);
-
-			this.result = endDate.diff(startDate, 'days') + ' days';
+		calculate: function() {
+			if (this.operation === 'to') {
+				this.result = dateDiff(this.diffStart, this.diffEnd);
+			} else if (this.operation === 'plus') {
+				this.result = datePlus(this.diffStart, this.diffInterval, this.timeUnit);
+			} else if (this.operation === 'minus') {
+				this.result = dateMinus(this.diffStart, this.diffInterval, this.timeUnit);
+			}
 
 			$( "#result" ).show();
-		},
-		datePlus: function() {
-			
-		},
-		dateMinus: function() {
-			
 		}
 	}
 });
+
+function dateDiff(startDate, endDate) {
+	var start = moment(startDate);
+	var end = moment(endDate);
+	var result;
+
+	result = end.diff(start, 'days') + ' days';
+	return result;
+};
+
+function datePlus(startDate, plusTime, timeUnit) {
+	var start = moment(startDate);
+	var result;
+
+	result = start.add(plusTime, timeUnit);
+	return result.format("M/D/YYYY");
+};
+
+function dateMinus(startDate, minusTime, timeUnit) {
+	var start = moment(startDate);
+	var result;
+
+	result = start.subtract(minusTime, timeUnit);
+	return result.format("M/D/YYYY");
+};

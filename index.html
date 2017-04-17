@@ -42,7 +42,7 @@
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
                     <div class="select-div">
-                        <select class="diff-input" name="diff-select" v-model="selected">
+                        <select class="diff-input" name="diff-select" v-model="operation">
                             <option value="to">to</option>
                             <option value="plus">plus</option>
                             <option value="minus">minus</option>
@@ -50,10 +50,9 @@
                     </div><!-- /.select-div -->
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
-                    <input class="diff-input" type="text" name="diff-end" placeholder="end date" v-if="selected === 'to'" v-model="diffEnd">
-                    <input class="diff-input diff-input-sm" type="text" name="diff-plus" placeholder="time" v-if="selected === 'plus'" v-model="diffPlus">
-                    <input class="diff-input diff-input-sm" type="text" name="diff-minus" placeholder="time" v-if="selected === 'minus'" v-model="diffMinus">
-                    <div class="select-div" v-if="selected === 'plus' || selected === 'minus'">
+                    <input class="diff-input" type="text" name="diff-end" placeholder="end date" v-if="operation === 'to'" v-model="diffEnd">
+                    <input class="diff-input diff-input-sm" type="text" name="diff-interval" placeholder="time" v-if="operation === 'plus' || operation === 'minus'" v-model="diffInterval">
+                    <div class="select-div" v-if="operation === 'plus' || operation === 'minus'">
                         <select class="diff-input" name="diff-time" v-model="timeUnit">
                             <option value="days">days</option>
                             <option value="weeks">weeks</option>
@@ -64,7 +63,7 @@
                 </div><!-- /.col-md-4 -->
             </div><!-- /#diff-form -->
             <div class="row">
-                <button id="diff-submit" class="diff-input" v-on:click="dateToDate()">Submit</button>
+                <button id="diff-submit" class="diff-input" v-on:click="calculate()">Submit</button>
             </div><!-- /.row -->
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">
