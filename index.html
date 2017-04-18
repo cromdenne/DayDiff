@@ -34,15 +34,15 @@
 
         <div id="content" class="container-fluid text-center">
             <div class="row">
-                <h1 class="hero text-gradient">DayDiff</h1>
+                <h1 class="site-title text-gradient">DayDiff</h1>
             </div><!-- /.row -->
             <div id="diff-form" class="row">
                 <div class="col-md-4">
-                    <input class="diff-input" type="text" name="diff-start" placeholder="start date" v-model="diffStart">
+                    <input id="diff-start" class="diff-input" type="text" placeholder="start date" v-model="diffStart">
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
                     <div class="select-div">
-                        <select class="diff-input" name="diff-select" v-model="operation">
+                        <select id="diff-select" class="diff-input" v-model="operation">
                             <option value="to">to</option>
                             <option value="plus">plus</option>
                             <option value="minus">minus</option>
@@ -50,10 +50,10 @@
                     </div><!-- /.select-div -->
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
-                    <input class="diff-input" type="text" name="diff-end" placeholder="end date" v-if="operation === 'to'" v-model="diffEnd">
-                    <input class="diff-input diff-input-sm" type="text" name="diff-interval" placeholder="time" v-if="operation === 'plus' || operation === 'minus'" v-model="diffInterval">
+                    <input id="diff-end" class="diff-input" type="text" placeholder="end date" v-if="operation === 'to'" v-model="diffEnd" key="diff-end">
+                    <input id="diff-interval" class="diff-input diff-input-sm" type="text" placeholder="time" v-else="operation === 'plus' || operation === 'minus'" v-model="diffInterval" key="diff-interval">
                     <div class="select-div" v-if="operation === 'plus' || operation === 'minus'">
-                        <select class="diff-input" name="diff-time" v-model="timeUnit">
+                        <select id="diff-time" class="diff-input" v-model="timeUnit">
                             <option value="days">days</option>
                             <option value="weeks">weeks</option>
                             <option value="months">months</option>
