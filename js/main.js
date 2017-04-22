@@ -118,13 +118,52 @@ var vm = new Vue({
 function dateDiff(startDate, endDate) {
 	var start = moment(startDate, "MM-DD-YYYY");
 	var end = moment(endDate, "MM-DD-YYYY");
-	
-	var result = end.diff(start, 'days');
-	if (result === 1 || result === -1) {
-		return result + ' day';
-	} else {
-		return result + ' days';
+
+	var years = end.diff(start, 'years');
+	end.add(-years, 'years');
+	var months = end.diff(start, 'months');
+	end.add(-months, 'months');
+	var days = end.diff(start, 'days');
+
+	var yearDesc = "";
+	var monthDesc = "";
+	var dayDesc = "";
+
+	// format year descriptor
+	if (years == 0) {
+		years = "";
 	}
+	else if (years == 1) {
+		yearDesc = " year, ";
+	}
+	else if (years > 1) {
+		yearDesc = " years, ";
+	}
+
+	// format month descriptor
+	if (months == 0) {
+		months = "";
+	}
+	else if (months == 1) {
+		monthDesc = " month, ";
+	}
+	else if (months > 1) {
+		monthDesc = " months, ";
+	}
+
+	// format day descriptor
+	if (days == 0) {
+		days = "";
+		monthDesc = monthDesc.replace(", ", "");
+	}
+	else if (days == 1) {
+		dayDesc = " day";
+	}
+	else if (days > 1) {
+		dayDesc = " days";
+	}
+
+	return years + yearDesc + months + monthDesc + days + dayDesc;
 };
 
 function datePlus(startDate, plusTime, timeUnit) {
