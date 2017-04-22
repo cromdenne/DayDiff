@@ -39,6 +39,7 @@
             <div id="diff-form" class="row">
                 <div class="col-md-4">
                     <input id="diff-start" class="diff-input" type="text" placeholder="start date" v-model="diffStart">
+                    <br><span class="error-msg">{{errorOne}}</span>
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
                     <div class="select-div">
@@ -60,10 +61,11 @@
                             <option value="years">years</option>
                         </select>
                     </div><!-- /.select-div -->
+                    <br><span class="error-msg">{{errorTwo}}</span>
                 </div><!-- /.col-md-4 -->
             </div><!-- /#diff-form -->
             <div class="row">
-                <button id="diff-submit" class="diff-input" v-on:click="calculate()">Submit</button>
+                <button id="diff-submit" class="diff-input" v-on:click="validate()">Submit</button>
             </div><!-- /.row -->
             <div class="row">
                 <div class="col-md-4 col-md-offset-4 col-xs-6 col-xs-offset-3">

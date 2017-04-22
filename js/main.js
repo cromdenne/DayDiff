@@ -7,10 +7,12 @@ var vm = new Vue({
 	data: {
 		operation: 'to',
 		timeUnit: 'days',
-		diffStart: '',
-		diffEnd: '',
-		diffInterval: '',
-		result: ''
+		diffStart: "",
+		diffEnd: "",
+		diffInterval: '0',
+		result: '',
+		errorOne: '',
+		errorTwo: ''
 	},
 
 	mounted: function() {
@@ -40,6 +42,53 @@ var vm = new Vue({
     },
 
 	methods: {
+		validate: function() {
+			var errorFree = 0;
+
+			// store start date to vue model
+			var modelDateStart = $('#diff-start').data("DateTimePicker").date();
+
+			// check start date input
+			if (modelDateStart == null) {
+				this.errorOne = "We need a date!";
+			}
+			else {
+				this.errorOne = "";
+				errorFree++;
+			}
+
+			// check end date / interval input
+			if (this.operation === "to") {
+				// store end date to vue model
+				var modelDateEnd = $('#diff-end').data("DateTimePicker").date();
+				// if no input, ask for input
+				if (modelDateEnd == null) {
+					this.errorTwo = "We need a date!";
+				}
+				// if no problems with input, clear error and calculate
+				else {
+					this.errorTwo = "";
+					errorFree++;
+				}
+			}
+			else if (this.operation === "plus" || this.operation === "minus") {
+				// if no input or non-numerical input, ask for input
+				if (!this.diffInterval || !$.isNumeric(this.diffInterval)) {
+					this.result = "";
+					this.errorTwo = "We need a number!";
+				}
+				// if no problems with input, clear error and calculate
+				else {
+					this.errorTwo = "";
+					errorFree++;
+				}
+			}
+
+			// if both inputs are error-free, calculate
+			if (errorFree >= 2) {
+				this.calculate();
+			}
+		},
 		calculate: function() {
 			// store start date to vue model
 			var modelDateStart = $('#diff-start').data("DateTimePicker").date();

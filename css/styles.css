@@ -106,6 +106,12 @@ a {  }
 	transition: 300ms all;
 }
 
+.error-msg {
+	color: #fa2471;
+	opacity: 0.75;
+	font-style: italic;
+}
+
 #result {
 	display: none;
 	background-color: #182147;
